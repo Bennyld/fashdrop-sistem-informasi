@@ -5,14 +5,22 @@
     font-family: Arial, sans-serif;
 }
 
+html,
 body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
     background: #fcfbfb;
 }
 
 .mobile-container {
-    max-width: 720px;
-    margin: auto;
+    width: 100%;
+    min-height: 100vh;
     background: rgb(7, 50, 7);
+    margin: 0;
+    padding: 0;
 }
 
 /* ======================
@@ -225,18 +233,21 @@ main {
 
 .product-card img {
     width: 100%;
-    height: 220px;
+    aspect-ratio: 4/5;
     object-fit: cover;
+    display: block;
 }
 
+
 .product-info {
-    padding: 10px;
+    padding: 16px;
 }
 
 .product-info h3 {
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1.4;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #222;
 }
 
 /* LINK PRODUK */
@@ -250,7 +261,60 @@ main {
    RESPONSIVE
 ====================== */
 
-@media(max-width:480px) {
+/* Laptop */
+@media (min-width: 721px) {
+
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+/* Tablet */
+@media (max-width: 720px) {
+
+    .mobile-container {
+        width: 100%;
+    }
+
+    .store-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-card img {
+        height: 200px;
+    }
+
+    .login-box {
+        width: 90%;
+    }
+
+}
+
+/* Smartphone */
+@media (max-width: 480px) {
+
+    header {
+        padding: 12px;
+    }
+
+    .search-container {
+        gap: 8px;
+    }
+
+    .search-box input {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .menu-button {
+        font-size: 26px;
+    }
 
     .logo img {
         width: 80px;
@@ -265,133 +329,182 @@ main {
         font-size: 13px;
     }
 
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
     .product-card img {
-        height: 180px;
+        height: 170px;
+    }
+
+    .product-info h3 {
+        font-size: 13px;
+    }
+
+    .login-box {
+        width: 90%;
+        padding: 20px;
+    }
+
+}
+
+/* HP Sangat Kecil */
+@media (max-width: 360px) {
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .logo img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .store-judul h2 {
+        font-size: 18px;
+    }
+
+    .store-text {
+        font-size: 12px;
+    }
+
+    .menu-button {
+        font-size: 22px;
+    }
+
+    .search-box input {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .product-card img {
+        height: 220px;
     }
 
 }
 
 /* ================= LOGIN POPUP ================= */
 
-.login-overlay{
+.login-overlay {
 
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .6);
 
-    display:none;
+    display: none;
 
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
 
-    z-index:3000;
-
-}
-
-.login-box{
-
-    width:360px;
-    background:white;
-    padding:30px;
-    border-radius:12px;
-    position:relative;
-
-    animation:popup .3s;
+    z-index: 3000;
 
 }
 
-@keyframes popup{
+.login-box {
 
-    from{
+    width: 360px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    position: relative;
 
-        transform:scale(.8);
+    animation: popup .3s;
 
-        opacity:0;
+}
+
+@keyframes popup {
+
+    from {
+
+        transform: scale(.8);
+
+        opacity: 0;
 
     }
 
-    to{
+    to {
 
-        transform:scale(1);
+        transform: scale(1);
 
-        opacity:1;
+        opacity: 1;
 
     }
 
 }
 
-.login-box h2{
+.login-box h2 {
 
-    text-align:center;
-    margin-bottom:20px;
-
-}
-
-.login-box input{
-
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border:1px solid #ccc;
-    border-radius:8px;
+    text-align: center;
+    margin-bottom: 20px;
 
 }
 
-.btn-login{
+.login-box input {
 
-    width:100%;
-    padding:12px;
-    margin-top:15px;
-
-    background:#36553d;
-
-    color:white;
-
-    border:none;
-
-    border-radius:8px;
-
-    cursor:pointer;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
 
 }
 
-.btn-login:hover{
+.btn-login {
 
-    background:#2c4632;
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
 
-}
+    background: #36553d;
 
-.switch-text{
+    color: white;
 
-    text-align:center;
+    border: none;
 
-    margin-top:20px;
+    border-radius: 8px;
 
-}
-
-.switch-text a{
-
-    color:#36553d;
-
-    font-weight:bold;
-
-    text-decoration:none;
+    cursor: pointer;
 
 }
 
-.close{
+.btn-login:hover {
 
-    position:absolute;
+    background: #2c4632;
 
-    right:18px;
+}
 
-    top:10px;
+.switch-text {
 
-    font-size:28px;
+    text-align: center;
 
-    cursor:pointer;
+    margin-top: 20px;
+
+}
+
+.switch-text a {
+
+    color: #36553d;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+}
+
+.close {
+
+    position: absolute;
+
+    right: 18px;
+
+    top: 10px;
+
+    font-size: 28px;
+
+    cursor: pointer;
 
 }
