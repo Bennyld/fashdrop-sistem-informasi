@@ -5,14 +5,22 @@
     font-family: Arial, sans-serif;
 }
 
-body {
-    background: #fcfbfb;
+html,
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    overflow-x:hidden;
+    background:#fcfbfb;
 }
 
-.mobile-container {
-    max-width: 720px;
-    margin: auto;
-    background: rgb(7, 50, 7);
+.mobile-container{
+    width:100%;
+    min-height:100vh;
+    background:rgb(7,50,7);
+    margin:0;
+    padding:0;
 }
 
 /* ======================
@@ -223,20 +231,23 @@ main {
     transform: translateY(-3px);
 }
 
-.product-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
+.product-card img{
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    display:block;
 }
 
-.product-info {
-    padding: 10px;
+
+.product-info{
+    padding:16px;
 }
 
-.product-info h3 {
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1.4;
+.product-info h3{
+    font-size:20px;
+    font-weight:600;
+    line-height:1.5;
+    color:#222;
 }
 
 /* LINK PRODUK */
@@ -250,7 +261,60 @@ main {
    RESPONSIVE
 ====================== */
 
-@media(max-width:480px) {
+/* Laptop */
+@media (min-width: 721px) {
+
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+/* Tablet */
+@media (max-width: 720px) {
+
+    .mobile-container {
+        width: 100%;
+    }
+
+    .store-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-card img {
+        height: 200px;
+    }
+
+    .login-box {
+        width: 90%;
+    }
+
+}
+
+/* Smartphone */
+@media (max-width: 480px) {
+
+    header {
+        padding: 12px;
+    }
+
+    .search-container {
+        gap: 8px;
+    }
+
+    .search-box input {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .menu-button {
+        font-size: 26px;
+    }
 
     .logo img {
         width: 80px;
@@ -265,8 +329,57 @@ main {
         font-size: 13px;
     }
 
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
     .product-card img {
-        height: 180px;
+        height: 170px;
+    }
+
+    .product-info h3 {
+        font-size: 13px;
+    }
+
+    .login-box {
+        width: 90%;
+        padding: 20px;
+    }
+
+}
+
+/* HP Sangat Kecil */
+@media (max-width: 360px) {
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .logo img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .store-judul h2 {
+        font-size: 18px;
+    }
+
+    .store-text {
+        font-size: 12px;
+    }
+
+    .menu-button {
+        font-size: 22px;
+    }
+
+    .search-box input {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .product-card img {
+        height: 220px;
     }
 
 }
