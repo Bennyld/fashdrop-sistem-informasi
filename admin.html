@@ -27,13 +27,17 @@
 
         <div class="sidebar-menu">
 
-            <a href="index.html">🏠 Home</a>
+            <a href="index.html">🏠 beranda</a>
+
+            <a href="profile.html">👤 Profile</a>
+
+            <a href="utama.html">📖 produk</a>
 
             <a href="admin.html">📊 Dashboard Admin</a>
 
             <a href="pesanan.html">📦 Pesanan Saya</a>
 
-            <a href="login.html">🔑 Login</a>
+            <a href="#" onclick="openLogin()">🔑 Login</a>
 
         </div>
 
@@ -122,7 +126,7 @@
 
                 <div class="button-group">
 
-                    <button class="detail">
+                    <button class="detail" onclick="window.location.href='detail-pembayaran.html'">
                         Detail
                     </button>
 
@@ -281,6 +285,74 @@
 
     </div>
 
+    <div id="loginOverlay" class="login-overlay">
+
+        <div class="login-box">
+
+            <span class="close" onclick="closeLogin()">&times;</span>
+
+            <div id="loginForm">
+
+                <h2>Login</h2>
+
+                <input type="text" placeholder="Username">
+
+                <input type="password" placeholder="Password">
+
+                <button class="btn-login">
+
+                    Login
+
+                </button>
+
+                <div class="switch-text">
+
+                    Belum punya akun?
+
+                    <a href="#" onclick="showRegister(event)">
+
+                        Daftar
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div id="registerForm" style="display:none;">
+
+                <h2>Daftar</h2>
+
+                <input type="text" placeholder="Nama">
+
+                <input type="email" placeholder="Email">
+
+                <input type="password" placeholder="Password">
+
+                <button class="btn-login">
+
+                    Daftar
+
+                </button>
+
+                <div class="switch-text">
+
+                    Sudah punya akun?
+
+                    <a href="#" onclick="showLogin(event)">
+
+                        Login
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
     <script>
 
         function closeSidebar() {
@@ -419,6 +491,34 @@
             updateDashboard();
 
         };
+
+        function openLogin() {
+            document.getElementById("loginOverlay").style.display = "flex";
+        }
+
+        function closeLogin() {
+            document.getElementById("loginOverlay").style.display = "none";
+        }
+
+        function showRegister(event) {
+            event.preventDefault();
+
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("registerForm").style.display = "block";
+        }
+
+        function showLogin(event) {
+            event.preventDefault();
+
+            document.getElementById("registerForm").style.display = "none";
+            document.getElementById("loginForm").style.display = "block";
+        }
+
+        window.onclick = function (e) {
+
+            if (e.target == document.getElementById("loginOverlay"))
+                closeLogin();
+        }
 
     </script>
 
